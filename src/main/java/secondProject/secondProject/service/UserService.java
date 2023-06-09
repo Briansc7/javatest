@@ -50,6 +50,9 @@ public class UserService {
     public Optional<User> getById(Long id){
         return userRepository.findById(id);
     }
+    public List<User> findByRoleName(String name){
+        return userRepository.findByRoleName(name);
+    }
 
     public User updateUser(Long id, UserDto userDto){
         Optional<User> user = userRepository.findById(id);
