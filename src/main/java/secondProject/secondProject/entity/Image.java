@@ -11,22 +11,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name="images")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     @Size(min=2, max=20)
-    private String name;
+    private String title;
     @NotBlank
-    @Size(min=2, max=20)
-    private String lastName;
-
-    @ManyToOne()
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Size(min=10, max=250)
+    private String url;
 
 }

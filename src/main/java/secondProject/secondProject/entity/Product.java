@@ -8,25 +8,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name="products")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     @Size(min=2, max=20)
     private String name;
-    @NotBlank
-    @Size(min=2, max=20)
-    private String lastName;
+
 
     @ManyToOne()
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @JoinColumn(name = "category_id")
+    private Category category;
 
+    @OneToMany()
+    @JoinColumn(name = "product_id")
+    private List<Image> images;
 }

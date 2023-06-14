@@ -49,5 +49,17 @@ public class UserController {
         return userService.updateUser(id, userDto);
     }
 
+    @GetMapping("/findByRoleName")
+    public ResponseEntity<?> findByRoleName(@RequestParam String name){
+        List<User> findByRoleName = userService.findByRoleName(name);
+        if(findByRoleName.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(name + " Role not found");
+        }
+
+       var roleFounded =  userService.findByRoleName(name);
+
+        return ResponseEntity.status(HttpStatus.OK).body(roleFounded);
+    }
+
 
 }
