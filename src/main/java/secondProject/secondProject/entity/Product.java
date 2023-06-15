@@ -25,11 +25,12 @@ public class Product {
     private String name;
 
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
+    @Size(min=1, max=10)
     private List<Image> images;
 }

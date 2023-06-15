@@ -18,7 +18,7 @@ import java.util.List;
 public class RoleController {
     private final RoleService roleService;
 
-    @PostMapping("/roleCreate")
+    @PostMapping("/create")
     public ResponseEntity<?> roleCreate(@Valid @RequestBody Role role){
         var name = role.getName();
         var RoleExists = roleService.getByRoleName(name);
@@ -32,12 +32,12 @@ public class RoleController {
 
     }
 
-    @DeleteMapping("/roleDelete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void roleDelete(@PathVariable Long id){
         roleService.roleDelete(id);
     }
 
-    @GetMapping("/roleList")
+    @GetMapping("/list")
     public List<Role> roleList(){
         return roleService.roleList();
     }
